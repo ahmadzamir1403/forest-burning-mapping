@@ -1,0 +1,364 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
+:root {
+  --background: #f2ece0;
+  --foreground: #14261e;
+  --card: #fffdf8;
+  --card-foreground: #14261e;
+  --popover: #fffdf8;
+  --popover-foreground: #14261e;
+  --primary: #1b4634;
+  --primary-foreground: #f7f2e7;
+  --secondary: #eae2d2;
+  --secondary-foreground: #14261e;
+  --muted: #eae2d2;
+  --muted-foreground: #5e7068;
+  --accent: #fbe6d6;
+  --accent-foreground: #8a3b0b;
+  --destructive: #a8231c;
+  --border: #e0d6c1;
+  --input: #d8cdb7;
+  --ring: #1b4634;
+  --chart-1: #e0631c;
+  --chart-2: #1b4634;
+  --chart-3: #c9a227;
+  --chart-4: #8fb3a0;
+  --chart-5: #a8231c;
+  --radius: 0.7rem;
+  --sidebar: #f7f2e7;
+  --sidebar-foreground: #14261e;
+  --sidebar-primary: #1b4634;
+  --sidebar-primary-foreground: #f7f2e7;
+  --sidebar-accent: #eae2d2;
+  --sidebar-accent-foreground: #14261e;
+  --sidebar-border: #e0d6c1;
+  --sidebar-ring: #1b4634;
+
+  /* Ember brand tokens */
+  --ember: #e0631c;
+  --ember-soft: #fbe6d6;
+  --ember-line: #f0c9a8;
+  --forest-ink: #14261e;
+  --forest: #1b4634;
+  --ivory: #f7f2e7;
+  --paper: #fffdf8;
+  --hairline: rgba(20, 38, 30, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: "Inter", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@theme {
+  --color-ember-50: #fdf3ea;
+  --color-ember-100: #fbe3d0;
+  --color-ember-200: #f6c3a0;
+  --color-ember-300: #f0a06b;
+  --color-ember-400: #e97f3d;
+  --color-ember-500: #e0631c;
+  --color-ember-600: #c4500f;
+  --color-ember-700: #9c3d0c;
+  --color-ember-800: #7a300a;
+  --color-ember-900: #5a2408;
+
+  --color-forest-50: #eef3f0;
+  --color-forest-100: #dce7e1;
+  --color-forest-200: #bcd1c5;
+  --color-forest-300: #8fb3a0;
+  --color-forest-400: #5c8b76;
+  --color-forest-500: #366b55;
+  --color-forest-600: #26523f;
+  --color-forest-700: #1b4634;
+  --color-forest-800: #143629;
+  --color-forest-900: #0e261d;
+
+  --color-ivory-50: #fcfaf4;
+  --color-ivory-100: #f7f2e7;
+  --color-ivory-200: #efe7d6;
+  --color-ivory-300: #e4d8c1;
+  --color-ivory-400: #d3c3a6;
+  --color-ivory-500: #b8a486;
+
+  --color-sand-100: #faf6ec;
+  --color-sand-200: #f1e9d9;
+  --color-sand-300: #e6dbc6;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.tracking-caps {
+  letter-spacing: 0.14em;
+}
+
+/* ---------------------------------------------------------------------------
+   Brand mark
+   --------------------------------------------------------------------------- */
+
+.ember-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(150deg, #1b4634 0%, #143629 58%, #0e261d 100%);
+  box-shadow:
+    0 10px 22px -12px rgba(20, 38, 30, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.ember-mark::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 13px;
+  background: radial-gradient(
+    120% 90% at 22% 12%,
+    rgba(255, 255, 255, 0.16),
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   --------------------------------------------------------------------------- */
+
+@keyframes ember-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+.live-ping {
+  animation: ember-pulse 2.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+@keyframes ember-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: ember-rise 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes ember-shimmer {
+  from {
+    background-position: -180% 0;
+  }
+  to {
+    background-position: 180% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(
+    90deg,
+    rgba(233, 227, 214, 0.35) 0%,
+    rgba(233, 227, 214, 0.85) 45%,
+    rgba(233, 227, 214, 0.35) 90%
+  );
+  background-size: 200% 100%;
+  animation: ember-shimmer 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-ping,
+  .rise-in,
+  .shimmer {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Leaflet overrides
+   --------------------------------------------------------------------------- */
+
+.leaflet-container {
+  background: #e7e2d6;
+  font-family: var(--font-sans);
+  outline: none;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 253, 248, 0.78) !important;
+  color: #4a5c53;
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 2px 7px;
+  border-top-left-radius: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.leaflet-control-attribution a {
+  color: #1b4634;
+}
+
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 10px 26px -16px rgba(20, 38, 30, 0.9) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.leaflet-bar a {
+  background: rgba(255, 253, 248, 0.95);
+  color: #14261e;
+  border-bottom: 1px solid rgba(20, 38, 30, 0.08);
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
+}
+
+.leaflet-bar a:hover {
+  background: #fffdf8;
+  color: #c4500f;
+}
+
+.leaflet-bar a:focus-visible {
+  outline: 2px solid #e0631c;
+  outline-offset: -2px;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #fffdf8;
+  color: #14261e;
+  border-radius: 14px;
+  box-shadow: 0 22px 48px -22px rgba(20, 38, 30, 0.55);
+  border: 1px solid rgba(20, 38, 30, 0.08);
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.leaflet-popup-tip {
+  background: #fffdf8;
+  border: 1px solid rgba(20, 38, 30, 0.08);
+}
+
+.leaflet-popup-close-button {
+  color: #5e7068 !important;
+  padding: 8px 8px 0 0 !important;
+}
+
+/* Leaflet's own panes reach z-index 700, so modals opened from the page have
+   to sit above the map (and the floating map controls above the panes). */
+[data-slot="dialog-overlay"],
+[data-slot="sheet-overlay"] {
+  z-index: 1200 !important;
+}
+
+[data-slot="dialog-content"],
+[data-slot="sheet-content"] {
+  z-index: 1300 !important;
+}
+
+.ember-popup-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5e7068;
+  margin: 0 0 6px;
+}
+
+.ember-popup-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 2px 0;
+  border-top: 1px solid rgba(20, 38, 30, 0.07);
+}
+
+.ember-popup-row span:first-child {
+  color: #5e7068;
+}
+
+.ember-popup-row span:last-child {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
